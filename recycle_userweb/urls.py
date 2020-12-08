@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+import recycle.views as recycle_views
+import user.views as user_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include('user.urls')),
-    path('', include('recycle.urls')),
+
+    path('user/', user_views.index),
+
+    path('', recycle_views.index),
 ]

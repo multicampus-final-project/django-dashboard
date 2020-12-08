@@ -11,19 +11,34 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
-
+import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-# BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+from django.core.exceptions import ImproperlyConfigured
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 from pathlib import Path
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+# BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+secret_file = os.path.join(BASE_DIR, './secrets.json')
+
+with open(secret_file) as f:
+    secrets = json.loads(f.read())
+
+# Keep secret keys in secrets.json
+def get_secret(setting, secrets=secrets):
+    try:
+        return secrets[setting]
+    except KeyError:
+        error_msg = "Set the {0} environment variable".format(setting)
+        raise ImproperlyConfigured(error_msg)
+
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'w)o4y_cnsxb-jw2ips&0#c7a)(k93)wuj$sk!m21ep_my&c1s8'
+SECRET_KEY = get_secret("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -59,7 +74,7 @@ ROOT_URLCONF = 'recycle_userweb.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,9 +94,17 @@ WSGI_APPLICATION = 'recycle_userweb.wsgi.application'
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': get_secret("DATABASE_NAME"),
+        'USER': get_secret("DATABASE_USER"),
+        'PASSWORD': get_secret("DATABASE_PASSWORD"),
+        'HOST': get_secret("DATABASE_HOST"),
+        'PORT': '5432'
     }
 }
 
@@ -110,8 +133,8 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
-
+# TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Seoul'
 USE_I18N = True
 
 USE_L10N = True
@@ -124,5 +147,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, STATIC_URL)
-
-ROOT_URLCONF = 'recycle.urls'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
