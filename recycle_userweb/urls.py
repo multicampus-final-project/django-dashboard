@@ -20,9 +20,11 @@ import user.views as user_views
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('admin/', admin.site.urls, name='admin'),
 
-    path('user/', user_views.index),
+    path('user/', user_views.index, name='user'),
 
-    path('', recycle_views.index),
+    path('', recycle_views.index, name='index'),
+    path('chart/', recycle_views.chart, name='chart'),
+    path('table/', recycle_views.table, name='table')
 ]

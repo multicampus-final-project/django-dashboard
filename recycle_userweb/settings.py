@@ -16,6 +16,7 @@ import json
 from django.core.exceptions import ImproperlyConfigured
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# F:/django-dashboard
 from pathlib import Path
 
 # BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,6 +133,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'ko'
 
 # TIME_ZONE = 'UTC'
 TIME_ZONE = 'Asia/Seoul'
