@@ -7,5 +7,11 @@
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://recycledb.c8eedu3otduy.us-east-1.rds.amazonaws.com:5432/testdb</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="recycledb@recycledb.c8eedu3otduy.us-east-1.rds.amazonaws.com" uuid="c42adbc9-411f-4740-a516-1348ced6d027">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://recycledb.c8eedu3otduy.us-east-1.rds.amazonaws.com:5432/recycledb</jdbc-url>
+    </data-source>
   </component>
 </project>
