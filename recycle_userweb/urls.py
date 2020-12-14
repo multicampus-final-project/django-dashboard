@@ -25,6 +25,7 @@ urlpatterns = [
     path('user/', user_views.index, name='user'),
 
     path('', recycle_views.index, name='index'),
-    path('chart/', recycle_views.chart, name='chart'),
-    path('table/', recycle_views.table, name='table')
+    
+    path('chart/',recycle_views.chart, name='chart'),
+    path('table/',recycle_views.table, name='table')
 ]
