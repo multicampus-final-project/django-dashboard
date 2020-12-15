@@ -23,4 +23,26 @@ class Bottle(models.Model):
     datetime = models.DateTimeField(default=timezone.now)
 
 
+class Partner(models.Model):
+    manager = models.CharField(max_length=30)
+    email = models.CharField(max_length=100, unique=True)
+    region = models.CharField(max_length=100)
+    message_confirmation = models.BooleanField()
 
+
+class Machine(models.Model):
+    partner = models.ForeignKey("Partner", related_name="m_partner", db_column="partner_id", on_delete=models.SET_NULL, null=True)
+    local1 = models.CharField(max_length=100)
+    local2 = models.CharField(max_length=100)
+    class1_full_rate = models.IntegerField(default=0)
+    class2_full_rate = models.IntegerField(default=0)
+    class3_full_rate = models.IntegerField(default=0)
+
+
+class Collection(models.Model):
+    machine = models.ForeignKey("Machine", related_name="machine_id", db_column="machine_id", on_delete=models.SET_NULL, null=True)
+    partner = models.ForeignKey("Partner", related_name="partner", db_column="machine", on_delete=models.SET_NULL, null=True)
+    collected_date = models.DateTimeField(auto_now_add=True)
+    class1_amount = models.IntegerField(default=0)
+    class2_amount = models.IntegerField(default=0)
+    class3_amount = models.IntegerField(default=0)
