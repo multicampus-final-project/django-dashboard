@@ -23,6 +23,9 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
 
     path('user/', user_views.index, name='user'),
+    path('account/login', user_views.kakao_login, name='login'),
+    path('oauth/', user_views.oauth, name='oauth'),
+    path('logout/', user_views.logout, name='logout'),
 
     path('', recycle_views.index, name='index'),
     
