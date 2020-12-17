@@ -27,8 +27,8 @@ urlpatterns = [
     path('oauth/', user_views.oauth, name='oauth'),
     path('logout/', user_views.logout, name='logout'),
 
-    path('', recycle_views.index, name='index'),
-    
+    path('index/', recycle_views.index, name='index'),
+    path('foliummap/', recycle_views.foliummap),
     path('chart/',recycle_views.chart, name='chart'),
-    path('table/',recycle_views.table, name='table')
+    path('table/',recycle_views.table, name='table'),
 ]

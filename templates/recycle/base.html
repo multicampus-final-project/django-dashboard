@@ -45,7 +45,7 @@
 
                 <!-- Nav Item - Dashboard -->
                 <li class="nav-item">
-                    <a class="nav-link" href="base.html">
+                    <a class="nav-link" href="{% url 'index' %}">
                         <i class="fas fa-fw fa-tachometer-alt"></i>
                         <span>Dashboard</span></a>
                 </li>
@@ -394,6 +394,7 @@
         <!-- Custom scripts for all pages-->
         <script src="{% static 'js/sb-admin-2.min.js' %}"></script>
 
+        {% block scripts %}{% endblock %}
     </body>
 
     </html>
