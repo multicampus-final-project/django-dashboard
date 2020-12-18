@@ -2,6 +2,7 @@ from django.shortcuts import render
 import pandas as pd
 import json
 import folium
+from .models import Machine, Partner, BottleClass, Bottle
 
 def chart(request):
     return render(request, 'recycle/chart.html')
@@ -9,6 +10,32 @@ def chart(request):
 def table(request):
 
     return render(request, 'recycle/table.html')
+
+def machine_list(request):
+    queryset = Machine.objects.all().order_by('class1_full_rate')
+
+    m_list = []
+
+    for m_data in queryset:
+        m_list.append({
+            'id':m_data.id,
+            'local1': m_data.local1,
+            'local2': m_data.local2,
+            'class1' : m_data.class1_full_rate*20,
+            'class2': m_data.class2_full_rate*20,
+            'class3': m_data.class3_full_rate*20,
+            'partner':m_data.partner.manager,
+        })
+
+    context = {
+        "m_list" : m_list,
+    }
+
+    return render(request, 'recycle/machine_list.html', context)
+
+def partner_list(request):
+
+    return render(request, 'recycle/partner_list.html')
 
 def foliummap(request):
 

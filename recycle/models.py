@@ -37,7 +37,9 @@ class Machine(models.Model):
     class1_full_rate = models.IntegerField(default=0)
     class2_full_rate = models.IntegerField(default=0)
     class3_full_rate = models.IntegerField(default=0)
-
+    lat = models.FloatField(default=0.0)
+    lng = models.FloatField(default=0.0)
+    name = models.CharField(max_length=50, default="")
 
 class Collection(models.Model):
     machine = models.ForeignKey("Machine", related_name="machine_id", db_column="machine_id", on_delete=models.SET_NULL, null=True)

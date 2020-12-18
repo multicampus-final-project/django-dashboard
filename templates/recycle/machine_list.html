@@ -1,0 +1,61 @@
+    {% extends 'recycle/base.html' %}
+    {% load static %}
+    {% block tablecss %}
+    <link href="{%  static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+    {% endblock %}
+    {% block content %}
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+            <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
+                        For more information about DataTables, please visit the <a target="_blank"
+                            href="https://datatables.net">official DataTables documentation</a>.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>지역 1</th>
+                                            <th>지역 2</th>
+                                            <th>재사용병</th>
+                                            <th>재활용병</th>
+                                            <th>폐기물</th>
+                                            <th>관리자</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for m_data in m_list %}
+                                        <tr>
+                                            <td>{{ m_data.id }}</td>
+                                            <td>{{ m_data.local1 }}</td>
+                                            <td>{{ m_data.local2 }}</td>
+                                            <td>{{ m_data.class1 }}</td>
+                                            <td>{{ m_data.class2 }}</td>
+                                            <td>{{ m_data.class3 }}</td>
+                                            <td>{{ m_data.partner }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+    {% endblock %}
+
+
+    {% block scripts %}
+        <!-- Page level plugins -->
+        <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+    {% endblock %}
