@@ -30,5 +30,6 @@ urlpatterns = [
     path('chart/',recycle_views.chart, name='chart'),
     path('table/',recycle_views.table, name='table'),
     path('machinelist/',recycle_views.machine_list, name='machinelist'),
+path('machineinfo/',recycle_views.machine_info, name='machineinfo'),
     path('partnerlist/',recycle_views.partner_list, name='partnerlist'),
 ]

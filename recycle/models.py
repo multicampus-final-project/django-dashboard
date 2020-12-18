@@ -21,13 +21,14 @@ class Bottle(models.Model):
     bottle_c = models.ForeignKey(BottleClass, related_name="b_class", db_column="bottle_class", on_delete=models.CASCADE)
     image = models.CharField(max_length=500)
     datetime = models.DateTimeField(default=timezone.now)
-
+    machine_id = models.IntegerField(default=0)
 
 class Partner(models.Model):
     manager = models.CharField(max_length=30)
     email = models.CharField(max_length=100, unique=True)
     region = models.CharField(max_length=100)
     message_confirmation = models.BooleanField()
+    tel = models.CharField(max_length=30, default="000-0000-0000")
 
 
 class Machine(models.Model):

@@ -5,40 +5,36 @@
     {% endblock %}
     {% block content %}
         <!-- Page Heading -->
-        <h1 class="h3 mb-2 text-gray-800">Machine List</h1>
-            <p class="mb-4">유리온에서 관리하는 유리병 분리수거기 리스트입니다</p>
+        <h1 class="h3 mb-2 text-gray-800">Partner List</h1>
+            <p class="mb-4">유리온과 함께하는 파트너사 입니다.</p>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Machine List</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Partner List</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
-                                            <th>지역 1</th>
-                                            <th>지역 2</th>
-                                            <th>재사용병(%)</th>
-                                            <th>재활용병(%)</th>
-                                            <th>폐기물(%)</th>
+                                            <th>Partner ID</th>
                                             <th>관리자</th>
+                                            <th>이메일</th>
+                                            <th>수신여부</th>
                                             <th>연락처</th>
+                                            <th>관리 지역</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {% for m_data in m_list %}
+                                        {% for p_data in p_list %}
                                         <tr>
-                                            <td><a href="../machineinfo/?pk={{ m_data.id }}">{{ m_data.id }}</a></td>
-                                            <td>{{ m_data.local1 }}</td>
-                                            <td>{{ m_data.local2 }}</td>
-                                            <td>{{ m_data.class1 }}</td>
-                                            <td>{{ m_data.class2 }}</td>
-                                            <td>{{ m_data.class3 }}</td>
-                                            <td>{{ m_data.partner }}</td>
-                                            <td>{{ m_data.tel }}</td>
+                                            <td>{{ p_data.id }}</td>
+                                            <td>{{ p_data.manager }}</td>
+                                            <td>{{ p_data.email }}</td>
+                                            <td>{{ p_data.message_confirmation }}</td>
+                                            <td>{{ p_data.tel }}</td>
+                                            <td>{{ p_data.region }}</td>
                                         </tr>
                                         {% endfor %}
                                     </tbody>
