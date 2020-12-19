@@ -20,6 +20,19 @@
 
         <!-- Custom styles for this template-->
         <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+        <style>
+            @font-face {
+                font-family: 'Jal_Onuel';
+                src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-10-21@1.0/Jal_Onuel.woff') format('woff');
+                font-weight: normal;
+                font-style: normal;
+            }
+            body { font-family: 'Jal_Onuel'; }
+            .text-xs {
+                font-size: 0.9rem;
+                font-weight: 500!important;
+            }
+        </style>
         {% block tablecss %}{% endblock %}
     </head>
 
@@ -34,7 +47,7 @@
                 <!-- Sidebar - Brand -->
                 <a class="sidebar-brand d-flex align-items-center justify-content-center" href="#">
                     <div class="sidebar-brand-icon rotate-n-15">
-                        <i class="fas fa-laugh-wink"></i>
+                        <i class="fas fa-wine-bottle"></i>
                     </div>
                     <div class="sidebar-brand-text mx-3">유리온</div>
                 </a>
