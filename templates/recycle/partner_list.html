@@ -1,0 +1,57 @@
+    {% extends 'recycle/base.html' %}
+    {% load static %}
+    {% block tablecss %}
+    <link href="{%  static 'vendor/datatables/dataTables.bootstrap4.min.css' %}" rel="stylesheet">
+    {% endblock %}
+    {% block content %}
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Partner List</h1>
+            <p class="mb-4">유리온과 함께하는 파트너사 입니다.</p>
+
+                    <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Partner List</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>Partner ID</th>
+                                            <th>관리자</th>
+                                            <th>이메일</th>
+                                            <th>수신여부</th>
+                                            <th>연락처</th>
+                                            <th>관리 지역</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for p_data in p_list %}
+                                        <tr>
+                                            <td>{{ p_data.id }}</td>
+                                            <td>{{ p_data.manager }}</td>
+                                            <td>{{ p_data.email }}</td>
+                                            <td>{{ p_data.message_confirmation }}</td>
+                                            <td>{{ p_data.tel }}</td>
+                                            <td>{{ p_data.region }}</td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+    {% endblock %}
+
+
+    {% block scripts %}
+        <!-- Page level plugins -->
+        <script src="{% static 'vendor/datatables/jquery.dataTables.min.js' %}"></script>
+        <script src="{% static 'vendor/datatables/dataTables.bootstrap4.min.js' %}"></script>
+
+        <!-- Page level custom scripts -->
+        <script src="{% static 'js/demo/datatables-demo.js' %}"></script>
+
+    {% endblock %}
