@@ -13,6 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 import recycle.views as recycle_views
@@ -21,15 +22,16 @@ import user.views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls, name='admin'),
-    path('user/', user_views.index, name='user'),
-    path('account/login', user_views.kakao_login, name='login'),
-    path('oauth/', user_views.oauth, name='oauth'),
+    # path('', user_views.index, name='user'),
+    # path('accounts/', include('allauth.urls')),
+    url(r'^accounts/', include('allauth.urls')),
     path('logout/', user_views.logout, name='logout'),
-    path('index/', recycle_views.index, name='index'),
+
+    path('', recycle_views.index, name='index'),
     path('foliummap/', recycle_views.foliummap),
     path('chart/',recycle_views.chart, name='chart'),
     path('table/',recycle_views.table, name='table'),
     path('machinelist/',recycle_views.machine_list, name='machinelist'),
-path('machineinfo/',recycle_views.machine_info, name='machineinfo'),
+    path('machineinfo/',recycle_views.machine_info, name='machineinfo'),
     path('partnerlist/',recycle_views.partner_list, name='partnerlist'),
 ]
