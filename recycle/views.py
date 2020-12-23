@@ -4,6 +4,8 @@ import json
 import folium
 import datetime
 from .models import Machine, Partner, BottleClass, Bottle, RUser
+# from user.views import naver
+
 
 def chart(request):
     return render(request, 'recycle/chart.html')
@@ -165,6 +167,7 @@ def index(request):
         "area_data_day":week_list,
         "area_data_trash" : week_trash_data,
     }
+
     return render(request, 'recycle/index.html', context)
 
 
